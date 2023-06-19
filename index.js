@@ -16,7 +16,7 @@ document.addEventListener('click', (e) => {
 const inputFieldBrandValue = document.getElementById('input-field-brand').value
 const inputFieledItemValue = document.getElementById('input-field-item').value
 const inputFieledQuantityValue = document.getElementById('input-field-quantity').value
-let listItem = `${inputFieldBrand}: ${inputFieledItem} x ${inputFieledQuantity}`
+let listItem = `${inputFieldBrandValue}: ${inputFieledItemValue} x ${inputFieledQuantityValue}`
     if (e.target.id === 'add-button') {
         if (inputFieledItemValue === "" || inputFieldBrandValue === "" || inputFieledQuantityValue === ""){
             return null

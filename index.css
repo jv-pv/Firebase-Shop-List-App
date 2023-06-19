@@ -1,0 +1,94 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+    background-color: #EEF0F4;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    min-width: 100%;
+}
+
+main {
+    display: flex;
+    width: auto;
+    height: auto;
+    max-width: max-content;
+    max-height: min-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid;
+    border-radius: 10px;
+    padding: 3em;
+}
+
+img {
+    display: block;
+    width: 150px;
+    margin-bottom: 0.5em;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.input-field label {
+    font-weight: bolder;
+    padding-bottom: 0.5em;
+}
+
+input {
+    color: #432000;
+    width: 250px;
+    height: 40px;
+    border: unset; 
+    border-radius: 7px;
+    text-align: center;
+    background-color: #DCE1EB;
+}
+
+input:active, 
+input:hover, 
+input:focus {
+    outline-color: #AC485A;
+}
+
+input::-webkit-input-placeholder {
+    color: #d1b4b9;
+}
+
+button {
+    color: #FDFDFD;
+    width: 250px;
+    height: 40px;
+    margin-top: 1em;
+    border: unset; 
+    border-radius: 7px;
+    background-color: #AC485A;
+    cursor: pointer;
+}
+
+#add-button:hover,
+#add-button:active,
+#add-button:focus {
+    background: #72313d;
+    outline-color: black;
+}
+
+#add-button:active {
+    transform: scale(0.9);
+    transition: all 500ms;
+}
+
+.list-container {
+    background: #432000;
+    width: 300px;
+}

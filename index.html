@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <title>Add to Cart</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <main class="container">
+            <h1>Shopping List</h1>
+            <img src="Assets/cat.png">
+            <form method="post">
+                <div class="input-field">
+                    <label for="input-field-brand">Brand Name:</label>
+                    <input type="text" id="input-field-brand" placeholder="Bepsi" required>
+                </div>
+                
+                <div class="input-field">
+                    <label for="input-field-item">Item:</label>
+                    <input type="text" id="input-field-item" placeholder="Diet Bepsi" required>
+                </div>
+
+                <div class="input-field">
+                    <label for="input-field-quantity">Quantity:</label>
+                    <input type="number" id="input-field-quantity" placeholder="1" min="1" max="1000" required>
+                </div>
+                
+                <button id="add-button">Add To List</button>
+            </form>
+            <div class="list-container">
+        </main>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>

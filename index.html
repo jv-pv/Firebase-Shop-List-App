@@ -13,10 +13,6 @@
             <h1>Shopping List</h1>
             <img src="Assets/cat.png">
             <form method="post">
-                <div class="input-field">
-                    <label for="input-field-brand">Brand Name:</label>
-                    <input type="text" id="input-field-brand" placeholder="Bepsi" required>
-                </div>
                 
                 <div class="input-field">
                     <label for="input-field-item">Item:</label>
@@ -25,12 +21,15 @@
 
                 <div class="input-field">
                     <label for="input-field-quantity">Quantity:</label>
-                    <input type="number" id="input-field-quantity" placeholder="1" min="1" max="1000" required>
+                    <input type="number" id="input-field-quantity" placeholder="1" min="1" max="1000" >
                 </div>
                 
                 <button id="add-button">Add To List</button>
             </form>
             <div class="list-container">
+                <ul id="shopping-list">
+                </ul>
+            </div>
         </main>
         <script src="index.js" type="module"></script>
     </body>

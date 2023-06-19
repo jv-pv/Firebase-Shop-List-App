@@ -16,7 +16,7 @@ main {
     display: flex;
     width: auto;
     height: auto;
-    max-width: max-content;
+    max-width: 300px;
     max-height: min-content;
     flex-direction: column;
     justify-content: center;
@@ -89,6 +89,15 @@ button {
 }
 
 .list-container {
-    background: #432000;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
     width: 300px;
+    height: auto;
+}
+
+.list-item {
+    font-size: 1.2rem;
+    font-weight: bolder;
 }

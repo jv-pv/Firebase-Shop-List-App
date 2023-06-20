@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
 import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import countUp from './Assets/Utils/utils.js'
 
 const appSettings = {
     databaseURL: "https://playground-4d045-default-rtdb.firebaseio.com/"
@@ -22,15 +23,8 @@ addButtonEl.addEventListener("click", function(e) {
         return 
     } else {
         shopppingListEl.innerHTML += `<li><span class="list-item">${inputFieldItemValue}</span>: x ${inputFieldQuantityValue}`
-        let listItem = ` item ${count}: ${inputFieldItemValue}, quantity: ${inputFieldQuantityValue} `
+        let listItem = ` item ${count}) ${inputFieldItemValue}, quantity: ${inputFieldQuantityValue} `
         push(shoppingListInDB, listItem)
     }
 })
 
-let count = 0
-
-function countUp() {
-    count++
-    console.log(count)
-    return count
-}

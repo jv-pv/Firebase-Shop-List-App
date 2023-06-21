@@ -5,4 +5,10 @@ function countUp() {
     return count
 }
 
-export default countUp
+function appendListItemsToHtml(itemValue, quantityValue) {
+    const shopppingListEl = document.getElementById('shopping-list')
+    shopppingListEl.innerHTML += `<li><span class='list-item'>${itemValue}</span>: x ${quantityValue}`
+}
+
+
+export { countUp, appendListItemsToHtml }

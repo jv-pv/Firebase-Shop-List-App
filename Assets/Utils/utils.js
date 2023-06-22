@@ -7,7 +7,7 @@ function countUp() {
     count++
     return count
 }
-s
+
 function appendListItemsToHtml(itemValue, quantityValue) {
     shopppingListEl.innerHTML += `${itemValue} x ${quantityValue} `
 }

@@ -8,14 +8,9 @@ function countUp() {
     return count
 }
 
-function appendListItemsToHtml(itemValue, quantityValue) {
+function setListItemsToHtml(itemValue, quantityValue) {
     shopppingListEl.innerHTML += `${itemValue} x ${quantityValue} `
 }
-
-function appendDBValuesToHtml(items) {
-    shopppingListEl.innerHTML += `<li>${items}</li>`
-}
-
 
 function clear() {
     inputFieldItem.value = ""
@@ -23,4 +18,4 @@ function clear() {
     shopppingListEl.innerHTML = ""
 }
 
-export { countUp, appendListItemsToHtml, appendDBValuesToHtml, clear}
+export { countUp, setListItemsToHtml, clear }

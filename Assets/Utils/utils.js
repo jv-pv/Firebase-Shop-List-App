@@ -7,18 +7,20 @@ function countUp() {
     count++
     return count
 }
-
-function appendListItemsToHtml(count, itemValue, quantityValue) {
-    shopppingListEl.innerHTML += `<li> Type: <i>${itemValue}</i> <span class="list-item">Quantity: <i>${quantityValue}<i></span></li>`
+s
+function appendListItemsToHtml(itemValue, quantityValue) {
+    shopppingListEl.innerHTML += `${itemValue} x ${quantityValue} `
 }
 
 function appendDBValuesToHtml(items) {
     shopppingListEl.innerHTML += `<li>${items}</li>`
 }
 
-function clearListItem() {
+
+function clear() {
     inputFieldItem.value = ""
     inputFieldQuantity.value = ""
+    shopppingListEl.innerHTML = ""
 }
 
-export { countUp, appendListItemsToHtml, appendDBValuesToHtml, clearListItem }
+export { countUp, appendListItemsToHtml, appendDBValuesToHtml, clear}

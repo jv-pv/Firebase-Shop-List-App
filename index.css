@@ -8,22 +8,58 @@ html, body {
 body {
     display: grid;
     place-content: center;
-    min-height: 100vh;
-    min-width: 100%;
+    min-height: 100dvh;
 }
 
 main {
+    width: 100%;
+}
+
+.container {
     display: flex;
-    width: auto;
-    height: auto;
-    max-width: 300px;
-    max-height: min-content;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 5px solid;
+    padding: 2em 3rem;
+    border: 5px solid black;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
     border-radius: 10px;
-    padding: 3em;
+}
+
+.container::before {
+    visibility: hidden;
+    content: "";
+    position: relative;
+    top: 250px;
+    right: 300px;
+    transform: rotate(90deg);
+    width: 100%;
+    border: 5px solid black;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-radius: 10px;
+    box-shadow: 25px 25px;
+}
+
+ul {
+    max-width: 400px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 1em;
+    padding: 1em;
+    list-style: none;
+}
+
+ul li {
+    color: darkred;
+    flex-grow: 1;
+    text-align: center;
+    padding: 0.5em 0.7em;
+    background-color: #FFFDF8;
+    border-radius: 0.7em;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 img {
@@ -46,6 +82,7 @@ img {
 }
 
 input {
+    font-weight: bolder;
     color: #432000;
     width: 250px;
     height: 40px;
@@ -53,6 +90,10 @@ input {
     border-radius: 7px;
     text-align: center;
     background-color: #DCE1EB;
+    border: 2px solid black;
+    border-right-width: 5px;
+    border-bottom-width: 3px;
+    border-radius: 10px;
 }
 
 input:active, 
@@ -86,19 +127,6 @@ button {
 #add-button:active {
     transform: scale(0.9);
     transition: all 500ms;
-}
-
-#shopping-list {
-    list-style: none;
-}
-
-.list-container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 300px;
-    height: auto;
 }
 
 .list-item {

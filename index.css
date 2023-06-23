@@ -12,7 +12,7 @@ html, body, * {
     font-family: 'Rubik', sans-serif;
     background-color: #b5ceff;
     font-size: 20px;
-
+    user-select: none;
 }
 
 body {
@@ -23,14 +23,6 @@ body {
 
 main {
     width: 100%;
-}
-
-h1,
-ul li,
-img,
-label,
-p {
-    user-select: none;
 }
 
 .container,

@@ -1,6 +1,6 @@
 This favicon was generated using the following font:
 
-- Font Title: NTR
-- Font Author: Copyright (c) 2012 Silicon Andhra (fonts.siliconandhra.org). Copyright (c) 2011, Joe Prince, Admix Designs (http://www.admixdesigns.com/) with Reserved Font Name Varela Round.
-- Font Source: http://fonts.gstatic.com/s/ntr/v15/RLpzK5Xy0ZjiGGhs5TA4bg.ttf
+- Font Title: Moo Lah Lah
+- Font Author: Copyright 2003-2021 The Moo Lah Lah Project Authors (https://github.com/googlefonts/moolahlah)
+- Font Source: http://fonts.gstatic.com/s/moolahlah/v3/dg4h_p_opKZOA0w1AYcm55wtYQYugjW4.ttf
 - Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

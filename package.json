@@ -1,5 +1,8 @@
 {
-  "name": "project",
+  "name": "shop_list",
+  "version": "1.0.1",
+  "description": "Shopping List App for my family",
+  "main": "index.js",
   "dependencies": {},
   "devDependencies": {
     "vite": "latest"
@@ -10,5 +13,7 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "author": "John Pieri Varela",
+  "license": "ISC",
   "type": "module"
 }

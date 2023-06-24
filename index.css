@@ -40,6 +40,7 @@ main {
 h1 {
     font-size: 1.5rem;
     margin: 0;
+    letter-spacing: 0.5px;
 }
 
 .container,
@@ -110,6 +111,10 @@ ul li {
 li:hover {
     background-color: var(--bg-color);
     box-shadow: inset 0 0 7px -5px red;
+}
+
+li.checked {
+    background-color: rgb(211, 1, 1);
 }
 
 li:hover::before {
@@ -198,7 +203,7 @@ button {
 .clear-button:hover,
 .clear-button:active,
 .clear-button:focus {
-    background: rgb(113, 48, 48);
+    background: rgb(111, 48, 48);
     outline-color: black;
 }
 

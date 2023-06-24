@@ -27,13 +27,13 @@ addButton.addEventListener("click", (e) => {
     }
 })
 
-clearButton.addEventListener('click', removeListItems)
+clearButton.addEventListener('dblclick', removeListItems)
 
 onValue(shoppingListInDB, function(snapshot) {
 
     if (snapshot.exists() === true) {
         let shoppingListItems = Object.entries(snapshot.val())
-        clearButton.classList.remove('hidden')
+        clearButton.classList.remove("hidden")
         clear()
     for (let i = 0; i < shoppingListItems.length; i++) {
                 let currentItems = shoppingListItems[i]
@@ -41,18 +41,22 @@ onValue(shoppingListInDB, function(snapshot) {
         }
     } else {
         shopppingListEl.innerHTML = "<p class='empty-list'>No Items</p>"
-        clearButton.classList.add('hidden')
+        clearButton.classList.add("hidden")
     }
 })
 
 
 function appendDBValuesToHtml(items) {
-    let listEl = document.createElement('li')
+    let listEl = document.createElement("li")
 
     let itemId = items[0]
     let itemValue = items[1] 
 
     listEl.textContent = itemValue
+
+    listEl.addEventListener('click', () => {
+        listEl.classList.toggle('checked')
+    })
 
     listEl.addEventListener('dblclick', () => {
         let listItemIDLocation = ref(database, `Shopping-List/${itemId}`)

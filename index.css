@@ -1,6 +1,7 @@
 *, *::before, *::after {
     box-sizing: border-box;
     --text-color: #050814;
+    --text-color2: #ffffff;
     --btn-color: #f0f9ff;
     --accent-color: #1c296e;
     --bg-color: #d6dbf5;
@@ -94,7 +95,7 @@ ul {
 
 ul li {
     font-family: 'ABC-Social-Medium';
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--text-color);
     flex-grow: 1;
     text-align: center;
@@ -115,6 +116,8 @@ li:hover {
 
 li.checked {
     background-color: rgb(211, 1, 1);
+    color: var(--text-color2);
+    opacity: 0.5;
 }
 
 li:hover::before {

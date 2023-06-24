@@ -48,11 +48,11 @@ onValue(shoppingListInDB, function(snapshot) {
 
 function appendDBValuesToHtml(items) {
     let listEl = document.createElement("li")
-
     let itemId = items[0]
     let itemValue = items[1] 
 
     listEl.textContent = itemValue
+    listEl.setAttribute('title', "Double Click to Remove")
 
     listEl.addEventListener('click', () => {
         listEl.classList.toggle('checked')

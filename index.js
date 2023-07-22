@@ -40,7 +40,7 @@ formEl.addEventListener("submit", (e) => {
 clearButton.addEventListener("dblclick", removeListItems);
 
 onValue(shoppingListInDB, function (snapshot) {
-  if (snapshot.exists() === true) {
+  if (snapshot.exists()) {
     let shoppingListItems = Object.entries(snapshot.val());
     clearButton.classList.remove("hidden");
     formEl.reset();

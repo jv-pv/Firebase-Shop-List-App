@@ -1,51 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
-        <!-- Favicon -->
-        <link rel="apple-touch-icon" sizes="180x180" href="./Assets/Favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./Assets/Favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./Assets/Favicon/favicon-16x16.png">
-        <link rel="manifest" href="./Assets/Favicon/site.webmanifest">
-        <link rel="stylesheet" href="index.css">
-        <title>Shopping List</title>
-    </head>
-    <body>
-        <main>
 
-            <div class="container">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./Assets/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./Assets/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./Assets/Favicon/favicon-16x16.png">
+    <link rel="manifest" href="./Assets/Favicon/site.webmanifest">
+    <link rel="stylesheet" href="index.css">
+    <title>Shopping List</title>
+</head>
 
-                <h1>Shopping List</h1>
-                <img src="./Assets/Images/Shop-List-Logo.png">
-                <form method="post">
-                    
-                    <div class="input-field">
-                        <label for="input-field-item">Item:</label>
-                        <input type="text" id="input-field-item" placeholder="Diet Bepsi" required>
-                    </div>
-    
-                    <div class="input-field">
-                        <label for="input-field-quantity">Quantity:</label>
-                        <input type="tel" id="input-field-quantity" placeholder="1" pattern="\d*" >
-                    </div>
-                    
-                    <button class="add-button">Add To List</button>
-                </form>
-                <div class="list-container">
-                    <ul id="shopping-list">
-                    </ul>
+<body>
+    <main>
+
+        <section class="container">
+
+            <h1>Shopping List</h1>
+            <img src="./Assets/Images/Shop-List-Logo.png">
+            <form method="post">
+
+                <div class="input-field">
+                    <label for="input-field-item">Item:</label>
+                    <input type="text" id="input-field-item" placeholder="Diet Bepsi" required>
                 </div>
 
-                <button class="clear-button">Clear List</button>
+                <div class="input-field">
+                    <label for="input-field-quantity">Quantity:</label>
+                    <input type="tel" id="input-field-quantity" placeholder="1" pattern="\d*" min="1" value="1">
+                </div>
 
-            </main>
+                <div class="input-field">
+                    <label for="select-from">From:</label>
+                    <select name="select-from" id="select-from">
+                        <option value="null">--Select--</option>
+                        <option value="Supermax">Supermax</option>
+                        <option value="Freshmart">Freshmart</option>
+                        <option value="Pharmacy">Pharmacy</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
 
-
+                <button class="add-button">Add To List</button>
+            </form>
+            <div class="list-container">
+                <ul class="shopping-list" id="shopping-list">
+                </ul>
             </div>
-        <script src="index.js" type="module"></script>
-    </body>
+
+            <button class="clear-button">Clear All</button>
+
+        </section>
+
+    </main>
+
+
+    <script src="index.js" type="module"></script>
+</body>
+
 </html>

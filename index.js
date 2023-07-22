@@ -1,74 +1,93 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
-import { setListItemsToHtml, clear } from './Assets/Utils/utils.js'
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  onValue,
+  remove,
+} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { setListItemsToHtml, clear } from "./Assets/Utils/utils.js";
 
 const appSettings = {
-    databaseURL: "https://playground-4d045-default-rtdb.firebaseio.com/"
-}
+  databaseURL: "https://playground-4d045-default-rtdb.firebaseio.com/",
+};
 
-const app = initializeApp(appSettings)
-const database = getDatabase(app)
-const shoppingListInDB = ref(database, "Shopping-List")
-const shopppingListEl = document.getElementById('shopping-list')
+const app = initializeApp(appSettings);
+const database = getDatabase(app);
+const shoppingListInDB = ref(database, "Shopping-List");
+const shopppingListEl = document.getElementById("shopping-list");
 
-const addButton = document.querySelector(".add-button")
-const clearButton = document.querySelector(".clear-button")
+const clearButton = document.querySelector(".clear-button");
+const formEl = document.querySelector("form");
 
-addButton.addEventListener("click", (e) => {
-    e.preventDefault()
-    const inputFieldItemValue = document.getElementById('input-field-item').value
-    const inputFieldQuantityValue = document.getElementById('input-field-quantity').value
-    if (inputFieldItemValue === "" || inputFieldQuantityValue === "") {
-        return 
-    } else {
-        setListItemsToHtml(inputFieldItemValue, inputFieldQuantityValue)
-        let listItem = `${inputFieldItemValue} x ${inputFieldQuantityValue} `
-        push(shoppingListInDB, listItem)
-    }
-})
+formEl.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const inputFieldItemValue = document.getElementById("input-field-item").value;
+  const inputFieldQuantityValue = document.getElementById(
+    "input-field-quantity"
+  ).value;
+  const selectFromValue = document.getElementById("select-from").value;
+  if (inputFieldItemValue !== "" && inputFieldQuantityValue !== "" && selectFromValue !== "null") {
+    setListItemsToHtml(selectFromValue, inputFieldItemValue, inputFieldQuantityValue);
+    let storeInDB = ref(database, `Shopping-List/${selectFromValue}`);
+    push(storeInDB, {
+      item: inputFieldItemValue,
+      quantity: inputFieldQuantityValue,
+    });
+  }
+});
 
-clearButton.addEventListener('dblclick', removeListItems)
+clearButton.addEventListener("dblclick", removeListItems);
 
-onValue(shoppingListInDB, function(snapshot) {
+onValue(shoppingListInDB, function (snapshot) {
+  if (snapshot.exists() === true) {
+    let shoppingListItems = Object.entries(snapshot.val());
+    clearButton.classList.remove("hidden");
+    formEl.reset();
+    clear();
+    shoppingListItems.forEach(([storeName, storeItem]) => {
+      appendDBValuesToHtml(storeName, storeItem);
+    });
+  } else {
+    shopppingListEl.innerHTML = "<p class='empty-list'>No Items</p>";
+    clearButton.classList.add("hidden");
+  }
+});
 
-    if (snapshot.exists() === true) {
-        let shoppingListItems = Object.entries(snapshot.val())
-        clearButton.classList.remove("hidden")
-        clear()
-    for (let i = 0; i < shoppingListItems.length; i++) {
-                let currentItems = shoppingListItems[i]
-                appendDBValuesToHtml(currentItems)
-        }
-    } else {
-        shopppingListEl.innerHTML = "<p class='empty-list'>No Items</p>"
-        clearButton.classList.add("hidden")
-    }
-})
+function appendDBValuesToHtml(storeName, storeItem) {
+  let listWrapper = document.createElement("div");
+  let storeUl = document.createElement("ul");
+  let storeH2 = document.createElement("h2");
 
+  listWrapper.className = "list-wrapper";
+  storeUl.className = "ul-sublist";
+  storeH2.className = "list-title";
 
-function appendDBValuesToHtml(items) {
-    let listEl = document.createElement("li")
-    let itemId = items[0]
-    let itemValue = items[1] 
+  storeH2.innerText = `${storeName}:`;
+  listWrapper.appendChild(storeH2);
+  listWrapper.appendChild(storeUl);
 
-    listEl.textContent = itemValue
-    listEl.setAttribute('title', "Double Click to Remove")
+  let items = Object.entries(storeItem);
+  items.forEach(([itemId, itemDetails]) => {
+    let listEl = document.createElement("li");
+    listEl.innerText = `${itemDetails.item} x ${itemDetails.quantity}`;
 
-    listEl.addEventListener('click', () => {
-        listEl.classList.toggle('checked')
-    })
+    listEl.addEventListener("dblclick", () => {
+      let itemRef = ref(database, `Shopping-List/${storeName}/${itemId}`);
+      remove(itemRef);
+    });
 
-    listEl.addEventListener('dblclick', () => {
-        let listItemIDLocation = ref(database, `Shopping-List/${itemId}`)
-        clear()
-        remove(listItemIDLocation)
-    })
-    
-    shopppingListEl.append(listEl)
+    listEl.addEventListener("click", () => {
+      listEl.classList.toggle("checked");
+    });
+
+    storeUl.append(listEl);
+  });
+
+  shopppingListEl.appendChild(listWrapper);
 }
 
 function removeListItems() {
-    let allListItems = ref(database, 'Shopping-List')
-    clear()
-    remove(allListItems)
+  clear();
+  remove(shoppingListInDB);
 }

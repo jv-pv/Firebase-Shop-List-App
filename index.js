@@ -85,6 +85,10 @@ function appendDBValuesToHtml(storeName, storeItem) {
     listEl.setAttribute("data-check", itemId);
     listEl.innerText = `${itemDetails.item} x ${itemDetails.quantity}`;
 
+    if (itemDetails.isChecked) { 
+      listEl.classList.add('checked');
+    }
+
     listEl.addEventListener("dblclick", () => {
       let itemRef = ref(database, `Shopping-List/${storeName}/${itemId}`);
       remove(itemRef);

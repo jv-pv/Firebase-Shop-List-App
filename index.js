@@ -5,6 +5,7 @@ import {
   push,
   onValue,
   remove,
+  update,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 import { setListItemsToHtml, clear } from "./Assets/Utils/utils.js";
 
@@ -27,12 +28,21 @@ formEl.addEventListener("submit", (e) => {
     "input-field-quantity"
   ).value;
   const selectFromValue = document.getElementById("select-from").value;
-  if (inputFieldItemValue !== "" && inputFieldQuantityValue !== "" && selectFromValue !== "null") {
-    setListItemsToHtml(selectFromValue, inputFieldItemValue, inputFieldQuantityValue);
+  if (
+    inputFieldItemValue.trim() !== "" &&
+    inputFieldQuantityValue.trim() !== "" &&
+    selectFromValue !== "null"
+  ) {
+    setListItemsToHtml(
+      selectFromValue,
+      inputFieldItemValue,
+      inputFieldQuantityValue
+    );
     let storeInDB = ref(database, `Shopping-List/${selectFromValue}`);
     push(storeInDB, {
       item: inputFieldItemValue,
       quantity: inputFieldQuantityValue,
+      isChecked: false,
     });
   }
 });
@@ -66,10 +76,13 @@ function appendDBValuesToHtml(storeName, storeItem) {
   storeH2.innerText = `${storeName}:`;
   listWrapper.appendChild(storeH2);
   listWrapper.appendChild(storeUl);
-
+  
   let items = Object.entries(storeItem);
+
   items.forEach(([itemId, itemDetails]) => {
     let listEl = document.createElement("li");
+
+    listEl.setAttribute("data-check", itemId);
     listEl.innerText = `${itemDetails.item} x ${itemDetails.quantity}`;
 
     listEl.addEventListener("dblclick", () => {
@@ -77,9 +90,29 @@ function appendDBValuesToHtml(storeName, storeItem) {
       remove(itemRef);
     });
 
-    listEl.addEventListener("click", () => {
-      listEl.classList.toggle("checked");
+    listEl.addEventListener("click", (e) => {
+      if (e.target.dataset.check) {
+        let itemId = e.target.dataset.check;
+        let itemDetails;
+
+        items.forEach(([id, details]) => {
+          if (id === itemId) {
+            itemDetails = details;
+          }
+        });
+
+        let itemRef = ref(database, `Shopping-List/${storeName}/${itemId}`);
+
+        itemDetails.isChecked = !itemDetails.isChecked;
+
+        console.log(itemDetails.isChecked);
+
+        update(itemRef, { isChecked: itemDetails.isChecked });
+      }
     });
+    itemDetails.isChecked
+      ? listEl.classList.add("checked")
+      : listEl.classList.remove("checked");
 
     storeUl.append(listEl);
   });

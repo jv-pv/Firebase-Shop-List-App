@@ -24,9 +24,7 @@ const formEl = document.querySelector("form");
 formEl.addEventListener("submit", (e) => {
   e.preventDefault();
   const inputFieldItemValue = document.getElementById("input-field-item").value;
-  const inputFieldQuantityValue = document.getElementById(
-    "input-field-quantity"
-  ).value;
+  const inputFieldQuantityValue = document.getElementById("input-field-quantity").value;
   const selectFromValue = document.getElementById("select-from").value;
   if (
     inputFieldItemValue.trim() !== "" &&

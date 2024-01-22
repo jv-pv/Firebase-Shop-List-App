@@ -92,22 +92,22 @@ function appendDBValuesToHtml(storeName, storeItem) {
 
     listEl.addEventListener("click", (e) => {
       // This logic is pretty useless 😀
-      if (e.target.dataset.check) {
-        let itemId = e.target.dataset.check;
-        let itemDetails;
+      // if (e.target.dataset.check) {
+      //   let itemId = e.target.dataset.check;
+      //   let itemDetails;
 
-        items.forEach(([id, details]) => {
-          if (id === itemId) {
-            itemDetails = details;
-          }
-        });
+      //   items.forEach(([id, details]) => {
+      //     if (id === itemId) {
+      //       itemDetails = details;
+      //     }
+      //   });
 
         let itemRef = ref(database, `Shopping-List/${storeName}/${itemId}`);
 
         itemDetails.isChecked = !itemDetails.isChecked;
 
         update(itemRef, { isChecked: itemDetails.isChecked });
-      }
+      // }
     });
     itemDetails.isChecked
       ? listEl.classList.add("checked")

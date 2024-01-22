@@ -126,7 +126,7 @@ h1 {
 }
 
 li.checked {
-    background-color: rgb(211, 1, 1);
+    background-color: rgb(255, 68, 68);
     color: var(--text-color2);
     opacity: 0.4;
 }

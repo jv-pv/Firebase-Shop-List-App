@@ -76,7 +76,6 @@ function appendDBValuesToHtml(storeName, storeItem) {
   listWrapper.appendChild(storeUl);
   
   let items = Object.entries(storeItem);
-    console.log(items)
   items.forEach(([itemId, itemDetails]) => {
     let listEl = document.createElement("li");
 
